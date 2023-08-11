@@ -1,4 +1,4 @@
-# AirBnB_clone - CONSOLE
+# CONSOLE
 
 # Description of the project
 
