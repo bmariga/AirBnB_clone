@@ -90,11 +90,11 @@ class HBNBCommand(cmd.Cmd):
         if not arg:
             print([str(v) for k, v in models.storage.all().items()])
         else:
-            if not self.clslist.get(arg):
+            if not self.classlist.get(arg):
                 print("** class doesn't exist **")
                 return False
             print([str(v) for k, v in models.storage.all().items()
-                   if type(v) is self.clslist.get(arg)])
+                   if type(v) is self.classlist.get(arg)])
 
     def do_update(self, arg):
         """Updates an instance based on the class name and id
