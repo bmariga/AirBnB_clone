@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-"""Defines the HBnB console"""
+"""HBnB console"""
 
 import cmd
 import models
@@ -19,7 +19,7 @@ from shlex import shlex
 class HBNBCommand(cmd.Cmd):
     """ hbnb shell """
     prompt = '(hbnb) '
-    clslist = {'BaseModel': BaseModel, 'State': State, 'City': City,
+    classlist = {'BaseModel': BaseModel, 'State': State, 'City': City,
                'Amenity': Amenity, 'Place': Place, 'Review': Review,
                'User': User}
 
@@ -31,10 +31,10 @@ class HBNBCommand(cmd.Cmd):
         """Creates a new instance of BaseModel, saves it and prints the id"""
         if not clsname:
             print('** class name missing **')
-        elif not self.clslist.get(clsname):
+        elif not self.classlist.get(clsname):
             print('** class doesn\'t exist **')
         else:
-            obj = self.clslist[clsname]()
+            obj = self.classlist[clsname]()
             models.storage.save()
             print(obj.id)
 
@@ -73,7 +73,7 @@ class HBNBCommand(cmd.Cmd):
             print('** class name missing **')
         elif not objid:
             print('** instance id missing **')
-        elif not self.clslist.get(clsname):
+        elif not self.classlist.get(clsname):
             print("** class doesn't exist **")
         else:
             k = clsname + "." + objid
@@ -118,7 +118,7 @@ class HBNBCommand(cmd.Cmd):
             print('** attribute name missing **')
         elif not attrval:
             print('** value missing **')
-        elif not self.clslist.get(clsname):
+        elif not self.classlist.get(clsname):
             print("** class doesn't exist **")
         else:
             k = clsname + "." + objid
@@ -151,7 +151,7 @@ class HBNBCommand(cmd.Cmd):
             print('*** Unknown syntax:', ln[0])
             return False
         clsname, line = ln[0], ln[1]
-        if clsname not in list(self.clslist.keys()):
+        if clsname not in list(self.classlist.keys()):
             print('*** Unknown syntax: {}.{}'.format(clsname, line))
             return False
         ln = line.split('(', 1)
