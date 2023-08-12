@@ -50,7 +50,7 @@ class HBNBCommand(cmd.Cmd):
             print('** class name missing **')
         elif not objid:
             print('** instance id missing **')
-        elif not self.clslist.get(clsname):
+        elif not self.classlist.get(clsname):
             print("** class doesn't exist **")
         else:
             k = clsname + "." + objid
