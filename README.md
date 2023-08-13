@@ -1,10 +1,14 @@
 # CONSOLE
 
-# Description of the project
+# Description of the Projects
 
-This part of the project involves simulating an AirBNB application by creating a control system for the modules used on our web page. This is a command-line console for managing data using the HBNB (HomeBnB) application's models. It provides a command-line interface to create, show, update, and delete instances of different classes, such as BaseModel, State, City, Amenity, Place, Review, and User.
+This is a command-line console for managing data using the HBNB (HomeBnB) application's models. 
 
-The console operates based on user inputs and responds by interacting with the underlying models package and storage system. It allows the user to perform various actions on instances, such as creating new instances, displaying their details, updating attributes, and deleting instances. 
+It provides a command-line interface to create, show, update, and delete instances of different classes, such as BaseModel, State, City, Amenity, Place, Review, and User.
+
+The console operates based on user inputs and responds by interacting with the underlying models package and storage system. 
+
+It allows the user to perform various actions on instances, such as ```creating new instances```, ```displaying their details```, ```updating attributes```, and ```deleting instances```. 
 
 # Installation
 
