@@ -19,15 +19,15 @@ To have access to the console:
 
 # How to start the console:
 
-```python3 console.py```
+```$ python3 console.py```
 
 or
 
-```./console.py```
+```$ ./console.py```
 
 # Interactive Mode
 
-$ ./console.py
+```$ ./console.py```
 
 Now you are on interactive mode and the prompt ```hbnb``` will appear:
 
