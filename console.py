@@ -19,9 +19,8 @@ from shlex import shlex
 class HBNBCommand(cmd.Cmd):
     """ hbnb shell """
     prompt = '(hbnb) '
-    classlist = {'BaseModel': BaseModel, 'State': State, 'City': City,
-               'Amenity': Amenity, 'Place': Place, 'Review': Review,
-               'User': User}
+    classlist = {'Amenity': Amenity, 'BaseModel': BaseModel, 'City': City , 'State': State, 
+'Place': Place, 'Review': Review, 'User': User}
 
     def emptyline(self):
         """empty line"""
@@ -50,7 +49,7 @@ class HBNBCommand(cmd.Cmd):
             print('** class name missing **')
         elif not objid:
             print('** instance id missing **')
-        elif not self.clslist.get(clsname):
+        elif not self.classlist.get(clsname):
             print("** class doesn't exist **")
         else:
             k = clsname + "." + objid
@@ -59,6 +58,18 @@ class HBNBCommand(cmd.Cmd):
                 print('** no instance found **')
             else:
                 print(obj)
+
+    def do_all(self, arg):
+        """Prints all instances based or not on the class name
+        """
+        if not arg:
+            print([str(v) for k, v in models.storage.all().items()])
+        else:
+            if not self.classlist.get(arg):
+                print("** class doesn't exist **")
+                return False
+            print([str(v) for k, v in models.storage.all().items()
+                   if type(v) is self.classlist.get(arg)])
 
     def do_destroy(self, arg):
         """destroy instance based on id
@@ -84,17 +95,6 @@ class HBNBCommand(cmd.Cmd):
                 del models.storage.all()[k]
                 models.storage.save()
 
-    def do_all(self, arg):
-        """Prints all instances based or not on the class name
-        """
-        if not arg:
-            print([str(v) for k, v in models.storage.all().items()])
-        else:
-            if not self.clslist.get(arg):
-                print("** class doesn't exist **")
-                return False
-            print([str(v) for k, v in models.storage.all().items()
-                   if type(v) is self.clslist.get(arg)])
 
     def do_update(self, arg):
         """Updates an instance based on the class name and id
@@ -134,13 +134,13 @@ class HBNBCommand(cmd.Cmd):
                 obj.updated_at = updatetime
                 models.storage.save()
 
-    def do_quit(self, arg):
-        """Quit command to exit the program
+    def do_EOF(self, arg):
+        """EOF to exit the program
         """
         return True
 
-    def do_EOF(self, arg):
-        """EOF to exit the program
+    def do_quit(self, arg):
+        """Quit command to exit the program
         """
         return True
 
@@ -218,6 +218,6 @@ class HBNBCommand(cmd.Cmd):
         except ValueError:
             return (str)
 
-
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
+
