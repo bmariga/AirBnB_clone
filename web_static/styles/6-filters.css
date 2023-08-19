@@ -2,6 +2,7 @@
 	background-color: #FAFAFA;
 	width: 100%;
 	border: #DDDDDD solid 1px;
+	border-radius: 4px;
 	display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -16,11 +17,16 @@
 
 .locations:hover .popover {
 	display: inline-block;
+	position: absolute;
+	left: 0px;
+	width: 34.2%;
 }
 
 .amenities:hover .popover {
 	display: inline-block;
-    margin-inline-start: auto;
+	position: absolute;
+	left: 342px;
+	width: 20%;
 }
 
 .popover h2 {
